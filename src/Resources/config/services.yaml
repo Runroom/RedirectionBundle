@@ -1,0 +1,8 @@
+services:
+    Runroom\RedirectionBundle\Listener\RedirectListener:
+        arguments:
+            $repository: Runroom\RedirectionBundle\Repository\RedirectionRepository
+
+    Runroom\RedirectionBundle\Repository\RedirectRepository:
+        arguments:
+            $entityManager: '@doctrine'
