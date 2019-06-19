@@ -1,8 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of the RedirectionBundle.
+ *
+ * (c) Runroom <runroom@runroom.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Runroom\RedirectionBundle\Tests\Fixtures\App;
 
-use Runroom\RedirectionBundle\RedirectionBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;

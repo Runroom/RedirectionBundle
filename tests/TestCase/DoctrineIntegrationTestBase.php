@@ -1,5 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of the RedirectionBundle.
+ *
+ * (c) Runroom <runroom@runroom.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Runroom\RedirectionBundle\Tests\TestCase;
 
 use Doctrine\ORM\Tools\SchemaTool;
@@ -16,7 +27,7 @@ abstract class DoctrineIntegrationTestBase extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        if (!\is_null(static::$kernel)) {
+        if (null !== static::$kernel) {
             return;
         }
 
@@ -47,7 +58,7 @@ abstract class DoctrineIntegrationTestBase extends TestCase
 
     protected function processDataFixtures(): array
     {
-        return \array_map(function ($value) {
+        return array_map(function ($value) {
             $testClass = new \ReflectionClass(static::class);
 
             return \dirname($testClass->getFileName(), 2) . '/Fixtures/' . $value;
