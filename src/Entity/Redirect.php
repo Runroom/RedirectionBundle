@@ -19,6 +19,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @final
+ *
  * @ORM\Entity
  * @DoctrineAssert\UniqueEntity("source")
  */

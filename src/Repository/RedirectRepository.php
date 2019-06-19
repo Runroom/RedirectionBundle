@@ -16,6 +16,9 @@ namespace Runroom\RedirectionBundle\Repository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query;
 
+/**
+ * @final
+ */
 class RedirectRepository
 {
     private $entityManager;
