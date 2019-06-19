@@ -1,0 +1,30 @@
+branches:
+  only:
+    - master
+    - 1.x
+
+language: php
+
+php:
+  - '7.1'
+  - '7.2'
+  - '7.3'
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+matrix:
+  fast_finish: true
+  include:
+    - php: '7.1'
+      env: COMPOSER_FLAGS="--prefer-lowest"
+
+before_install:
+  - if [ -x .travis/before_install_${TARGET}.sh ]; then .travis/before_install_${TARGET}.sh; fi;
+
+install:
+  - composer update --prefer-dist --no-interaction --prefer-stable ${COMPOSER_FLAGS}
+
+script:
+  - vendor/bin/simple-phpunit
