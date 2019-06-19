@@ -16,16 +16,9 @@ cache:
 
 matrix:
     fast_finish: true
-    include:
-        - php: 7.1
-          env: dependencies=lowest
-
-before_install:
-    - composer global require hirak/prestissimo
 
 install:
     - composer update --prefer-dist --no-progress --no-interaction
-    - if [ "$dependencies" = "lowest" ]; then composer update --prefer-dist --no-progress --no-interaction --prefer-stable --prefer-lowest; fi;
 
 script:
     - vendor/bin/simple-phpunit
