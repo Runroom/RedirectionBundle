@@ -23,10 +23,10 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\HttpKernel\KernelEvents;
 
-class RedirectListenerTest extends TestCase
+final class RedirectListenerTest extends TestCase
 {
-    protected $repository;
-    protected $listener;
+    private $repository;
+    private $listener;
 
     protected function setUp(): void
     {
@@ -38,7 +38,7 @@ class RedirectListenerTest extends TestCase
     /**
      * @test
      */
-    public function itSubscribesToKernelRequestEvent()
+    public function itSubscribesToKernelRequestEvent(): void
     {
         $events = $this->listener->getSubscribedEvents();
 
@@ -48,7 +48,7 @@ class RedirectListenerTest extends TestCase
     /**
      * @test
      */
-    public function itDoesNotDoAnythingIfTheRequestIsNotTheMasterOne()
+    public function itDoesNotDoAnythingIfTheRequestIsNotTheMasterOne(): void
     {
         $event = $this->getResponseEvent(HttpKernelInterface::SUB_REQUEST);
 
@@ -60,7 +60,7 @@ class RedirectListenerTest extends TestCase
     /**
      * @test
      */
-    public function itDoesNotDOAnythingIfTheRouteIsNotFoundOnTheRepository()
+    public function itDoesNotDOAnythingIfTheRouteIsNotFoundOnTheRepository(): void
     {
         $this->repository->findRedirect('/')->shouldBeCalled()->willReturn(null);
 
@@ -74,7 +74,7 @@ class RedirectListenerTest extends TestCase
     /**
      * @test
      */
-    public function itDoesARedirectToDestinationUrl()
+    public function itDoesARedirectToDestinationUrl(): void
     {
         $this->repository->findRedirect('/')->shouldBeCalled()->willReturn([
             'destination' => '/redirect',
@@ -92,7 +92,7 @@ class RedirectListenerTest extends TestCase
         $this->assertSame(301, $response->getStatusCode());
     }
 
-    private function getResponseEvent(int $requestType = HttpKernelInterface::MASTER_REQUEST)
+    private function getResponseEvent(int $requestType = HttpKernelInterface::MASTER_REQUEST): GetResponseEvent
     {
         $kernel = $this->prophesize(Kernel::class);
 

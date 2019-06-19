@@ -20,7 +20,7 @@ trait Publishable
     /**
      * @ORM\Column(type="boolean")
      */
-    protected $publish;
+    private $publish;
 
     public function setPublish(?bool $publish): self
     {

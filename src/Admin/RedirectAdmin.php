@@ -20,9 +20,9 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class RedirectAdmin extends AbstractAdmin
+final class RedirectAdmin extends AbstractAdmin
 {
-    protected static $typeChoices = [
+    private static $typeChoices = [
         'redirect.httpCode.permanent' => Redirect::PERMANENT,
         'redirect.httpCode.temporal' => Redirect::TEMPORAL,
     ];

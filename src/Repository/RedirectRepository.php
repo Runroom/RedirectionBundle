@@ -18,7 +18,7 @@ use Doctrine\ORM\Query;
 
 class RedirectRepository
 {
-    protected $entityManager;
+    private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
     {

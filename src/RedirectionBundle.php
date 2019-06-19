@@ -15,6 +15,6 @@ namespace Runroom\RedirectionBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class RedirectionBundle extends Bundle
+final class RedirectionBundle extends Bundle
 {
 }

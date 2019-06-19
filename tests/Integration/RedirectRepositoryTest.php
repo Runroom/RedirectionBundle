@@ -16,9 +16,9 @@ namespace Runroom\RedirectionBundle\Tests\Integration;
 use Runroom\RedirectionBundle\Repository\RedirectRepository;
 use Runroom\RedirectionBundle\Tests\TestCase\DoctrineIntegrationTestBase;
 
-class RedirectRepositoryTest extends DoctrineIntegrationTestBase
+final class RedirectRepositoryTest extends DoctrineIntegrationTestBase
 {
-    protected $repository;
+    private $repository;
 
     protected function setUp(): void
     {
@@ -29,7 +29,7 @@ class RedirectRepositoryTest extends DoctrineIntegrationTestBase
     /**
      * @test
      */
-    public function itReturnsNullIfItDoesNotFindARedirect()
+    public function itReturnsNullIfItDoesNotFindARedirect(): void
     {
         $redirect = $this->repository->findRedirect('/it-is-not-there');
 
@@ -39,7 +39,7 @@ class RedirectRepositoryTest extends DoctrineIntegrationTestBase
     /**
      * @test
      */
-    public function itReturnsNullIfTheRedirectIsUnpublish()
+    public function itReturnsNullIfTheRedirectIsUnpublish(): void
     {
         $redirect = $this->repository->findRedirect('/it-is-unpublish');
 
@@ -49,7 +49,7 @@ class RedirectRepositoryTest extends DoctrineIntegrationTestBase
     /**
      * @test
      */
-    public function itReturnsTheRedirect()
+    public function itReturnsTheRedirect(): void
     {
         $redirect = $this->repository->findRedirect('/redirect');
 
