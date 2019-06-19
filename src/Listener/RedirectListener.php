@@ -36,7 +36,7 @@ final class RedirectListener implements EventSubscriberInterface
 
         if ($redirect = $this->repository->findRedirect($event->getRequest()->getPathInfo())) {
             $event->setResponse(
-                new RedirectResponse($redirect['destination'], $redirect['httpCode'])
+                new RedirectResponse($redirect['destination'], (int) $redirect['httpCode'])
             );
         }
     }
