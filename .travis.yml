@@ -1,30 +1,31 @@
 branches:
-  only:
-    - master
-    - 1.x
+    only:
+        - master
+        - 1.x
 
 language: php
 
 php:
-  - '7.1'
-  - '7.2'
-  - '7.3'
+    - 7.1
+    - 7.2
+    - 7.3
 
 cache:
-  directories:
-    - $HOME/.composer/cache/files
+    directories:
+        - $HOME/.composer/cache/files
 
 matrix:
-  fast_finish: true
-  include:
-    - php: '7.1'
-      env: COMPOSER_FLAGS="--prefer-lowest"
+    fast_finish: true
+    include:
+        - php: 7.1
+          env: dependencies=lowest
 
 before_install:
-  - if [ -x .travis/before_install_${TARGET}.sh ]; then .travis/before_install_${TARGET}.sh; fi;
+    - composer global require hirak/prestissimo
 
 install:
-  - composer install --prefer-dist --no-progress --no-interaction --prefer-stable ${COMPOSER_FLAGS}
+    - composer update --prefer-dist --no-progress --no-interaction
+    - if [ "$dependencies" = "lowest" ]; composer update --prefer-dist --no-progress --no-interaction --prefer-stable --prefer-lowest; fi;
 
 script:
-  - vendor/bin/simple-phpunit
+    - vendor/bin/simple-phpunit
