@@ -24,7 +24,7 @@ before_install:
   - if [ -x .travis/before_install_${TARGET}.sh ]; then .travis/before_install_${TARGET}.sh; fi;
 
 install:
-  - composer update --prefer-dist --no-interaction --prefer-stable ${COMPOSER_FLAGS}
+  - composer install --prefer-dist --no-progress --no-interaction --prefer-stable ${COMPOSER_FLAGS}
 
 script:
   - vendor/bin/simple-phpunit
