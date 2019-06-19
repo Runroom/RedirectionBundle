@@ -25,7 +25,7 @@ before_install:
 
 install:
     - composer update --prefer-dist --no-progress --no-interaction
-    - if [ "$dependencies" = "lowest" ]; composer update --prefer-dist --no-progress --no-interaction --prefer-stable --prefer-lowest; fi;
+    - if [ "$dependencies" = "lowest" ]; then composer update --prefer-dist --no-progress --no-interaction --prefer-stable --prefer-lowest; fi;
 
 script:
     - vendor/bin/simple-phpunit
